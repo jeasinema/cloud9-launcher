@@ -16,7 +16,6 @@ const
   config = new Configstore(pkg.name, defaultConfig),
   app = express(),
 
-  isHttps = !!config.get('ssl') || false,
   TIMEOUT_TIME = config.get('limitTime') || 5000, // limit runC9 time.
   ports = [],
   projects = [],
@@ -52,7 +51,7 @@ app.use(bodyParser.urlencoded({
 app.get('/', function(req, res) {
   res.render('index', {
     projects: projects,
-    url: `http${(isHttps)?'s':''}:\/\/${config.get('c9Host')}`
+    url: `http:\/\/${config.get('c9Host')}`
   });
 });
 
@@ -267,25 +266,9 @@ app.use('/api', api);
 
 // Launch UI server
 const
-  sslConfig = config.get('ssl'),
   port = config.get('port') || 8080;
-if (isHttps) {
-  const option = {};
-  for (let k in sslConfig) {
-    if (fs.existsSync(sslConfig[k]))
-      option[k] = fs.readFileSync(sslConfig[k]);
-    else
-      console.warn('Config: property of ' + k + ' is not a correct path.');
-  }
-
-  require('https')
-    .createServer(option, app)
-    .listen(port, function() {
-      console.info('UI server listening on port ' + port);
-    });
-} else
   app.listen(port, function() {
-    console.info('UI server listening on port ' + port);
+    console.info('HTTP: UI server listening on port ' + port);
   });
 
 process.on('exit', function() {
