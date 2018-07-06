@@ -1,0 +1,32 @@
+{
+	"c9Path": "/home/robot/workspace/icenter_ide/c9sdk",
+	"nodePath": "node",
+	"account": "account",
+	"password": "password",
+	"port": 8080,
+	"ports": [
+		8081,
+		8082
+	],
+	"autoFindPort": true,
+	"c9Host": "localhost",
+	"projects": [
+		{
+			"name": "STM32F1",
+			"path": "/home/robot/workspace/icenter_ide/stm32/template_stm32f1"
+		},
+		{
+			"name": "STM32F4",
+			"path": "/home/robot/workspace/icenter_ide/stm32/template_stm32f4"
+		},
+		{
+			"name": "STM32F1_mbed",
+			"path": "/home/robot/workspace/icenter_ide/stm32/mbed-stm32f1"
+		},
+		{
+			"name": "STM32F4_mbed",
+			"path": "/home/robot/workspace/icenter_ide/stm32/mbed-stm32f4"
+		}
+	],
+	"limitTime": 10000000000
+}
